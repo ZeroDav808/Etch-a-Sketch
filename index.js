@@ -17,3 +17,25 @@ function createGrid() {
     }
     container.append(grid);
 }
+
+createGrid();
+
+function getRandomInt() {
+    return Math.floor(Math.random() * 256);
+}
+
+function clearColor(element) {
+    element.style.backgroundColor = 'white';
+}
+
+function highlightSquares(e) {
+    if(e.target.className === 'box'){
+        const element = e.target;
+        element.style.backgroundColor = `rgb(${getRandomInt()}, ${getRandomInt()}, ${getRandomInt()})`;
+        setTimeout(() => clearColor(element),3000);
+    }
+}
+
+const boxes = document.querySelector('.grid');
+
+boxes.addEventListener('mouseover', (e) => {highlightSquares(e)});
